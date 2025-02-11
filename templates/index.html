@@ -1,0 +1,22 @@
+{% extends 'layout/base.html' %}
+
+{% block 'title' %}Inicio{% endblock %}
+
+{% block 'content' %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Pagina en construccion</h2>
+            <span style='font-size:100px;'>&#128679;</span>
+            {% if request.user.is_authenticated %}
+            <hr>
+            <h4>
+                {{ user.username | upper }}, bienvenido
+            </h4>
+            {% endif %}
+            <p>Accesos directos</p>
+            <a href="https://millicom-my.sharepoint.com/:x:/g/personal/parrad_tigo_net_bo/EbIEUmeY71FOtG6UvAm2cjsBRn2T_yzURW9jgP8ndxvM9Q?email=villartem%40tigo.net.bo&e=4%3a5xh5H7&fromShare=true&at=9" target="_blank">Escalamientos_Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
