@@ -1,0 +1,10 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block 'title' %}Logout{% endblock %}
+{% block 'content' %}
+<div class="container mt-5">
+    <p> You have successfully logged out.
+    You can <a href="{% url 'login' %}">Login again</a>.
+    </p>
+</div>
+{% endblock %}

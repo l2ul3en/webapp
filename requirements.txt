@@ -1,0 +1,7 @@
+Django
+django-tables2
+django-crispy-forms
+crispy-bootstrap5
+requests
+pytz
+tablib

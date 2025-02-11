@@ -1,0 +1,69 @@
+{% extends 'layout/base10.html' %}
+{% load render_table from django_tables2 %}
+
+{% block 'title' %}OyM{% endblock %}
+{% block 'styles' %}
+<!-- Bootstrap 5 CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+<style>
+*{
+    font-family: "Verdana";
+}
+thead > tr > th{
+    font-size: 12px;
+    background-color: var(--bs-primary)!important;
+}
+thead > tr > th > a {
+    color: var(--bs-white)!important;
+    text-decoration: none;
+}
+tbody, ul > li {
+	font-size: 10px;
+}
+.footer_date {
+    font-size: 12px;
+}
+</style>
+{% endblock %}
+{% block 'scripts' %}
+<!-- js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+{% block 'content' %}
+<div class="container-fluid">
+    <div class="row align-items-center justify-content-between mb-2">
+        <div class="col text-center">
+            <h5><strong>INCIDENTES DE RED</strong></h5>
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-between">
+        <div class="col text-center">
+            <h6><strong>RECLAMOS MASIVOS EN DIAGNOSTICO</strong></h6>
+            {% render_table diagnostico %}
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-between">
+        <div class="col text-center">
+            <h6><strong>INCIDENTES ABIERTOS FIJO</strong></h6>
+            {% render_table fijo %}
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-between">
+        <div class="col text-center">
+            <h6><strong>INCIDENTES ABIERTOS IT</strong></h6>
+            {% render_table it %}
+        </div>
+    </div>
+    <div class="row align-items-center justify-content-between">
+        <div class="col text-center">
+            <h6><strong>INCIDENTES ABIERTOS MOBILE</strong></h6>
+            {% render_table mobile %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-wrap">
+            <p class='footer_date'>Datos actualizados hasta {{ fecha_update }}.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

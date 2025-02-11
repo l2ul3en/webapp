@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}">WebApp-NOC</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Bitacora</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cobertura</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Otras Apps
+                    </a>
+                    <ul class="dropdown-menu">
+                        <a class="dropdown-item" href="http://172.28.7.66/statusHFC.php" target="_blank">Status HFC</a>
+                        <a class="dropdown-item" href="http://172.28.7.66/traficoCM.php" target="_blank">Trafico CM</a>
+                        <a class="dropdown-item" href="http://172.28.7.66/offlineHFC.php" target="_blank">CM Offline - HFC</a>
+                        <a class="dropdown-item" href="http://172.28.7.66/offlineFTTH.php" target="_blank">ONT Offline - FTTH</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" target="_blank" href="{% url 'incidents' %}">Incidentes de Red</a>
+                    </ul>
+                </li>
+                
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-link">
+                    {% if request.user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
