@@ -1,0 +1,29 @@
+{% extends 'layout/base.html' %}
+{% block 'title' %}Bitacora{% endblock %}   
+{% block 'styles' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'bitacora/css/style.css' %}">
+{% endblock %}
+
+{% block 'content' %}
+
+<div class="contenedor">
+    {% include 'bitacora/partials/form.html' %}
+</div>
+
+{% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="alert-message"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Important: {% endif %}
+        {{ message }}
+        </li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
+<div class="data-table" id="division-tabla" >
+    {% include 'bitacora/partials/table.html' %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'layout/base.html' %}
+{% load render_table from django_tables2 %}
+{% load querystring from django_tables2 %}
+{% block 'title' %}Incidents{% endblock %}
+{% block 'styles' %}
+<style>
+@font-face {
+    font-family: "Philosopher-regular";
+    src: url("../fonts/Philosopher-Regular.ttf");
+}
+@font-face {
+    font-family: "Philosopher-bold";
+    src: url("../fonts/Philosopher-Bold.ttf");
+}
+*{
+    font-family: "Verdana";
+}
+thead {font-size: medium;}
+tbody,ul,li {font-size: small;}
+h5,h1,h2,h3,h4 {
+    text-align: center;
+    --font-family: "Philosopher-bold";
+}
+.form-group{
+    display: flex;
+    justify-content: center;
+}
+h3 {
+   display: flex;
+   justify-content: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+</style>
+{% endblock %}
+{% block 'navbar' %}{% endblock %}
+{% block 'content' %}
+
+<div class="container">
+    <br>
+    <h3><strong>Incidentes de Red</strong></h3>
+    {% include 'incidents/partials/form.html' %}
+</div>
+    <br>
+    <h5><strong>Incidentes Masivos</strong></h5>
+    {% if new != None %}
+        <div class="container">
+            <a href="{% querystring '_new_export'='xlsx' %}">Excel</a>
+        </div>
+        {% render_table new %}
+    {% endif %}
+
+    <h5><strong>Incidentes Abiertos</strong></h5>
+    {% if open != None %}
+        <div class="container">
+            <a href="{% querystring '_open_export'='xlsx' %}">Excel</a>
+        </div>
+        <br>
+        {% render_table open %}
+    {% endif %}
+
+    <h5><strong>Incidentes Resueltos</strong></h5>
+    {% if close != None %}
+        <div class="container">
+            <a href="{% querystring '_close_export'='xlsx' %}">Excel</a>
+        </div>
+        <br>
+        {% render_table close %}
+    {% endif %}
+
+    <br>
+    <p><small>Datos actualizados hasta {{ fecha_update }}.<small></p>
+
+{% endblock %}

@@ -1,7 +1,7 @@
 import django_tables2 as tables
 from utils.WebData import WebData
 from django.utils.html import format_html
-from datetime import datetime
+
 
 def count_ticket_footer(table):
     try:

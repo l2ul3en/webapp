@@ -23,4 +23,7 @@ urlpatterns = [
     path('', views.index , name='index'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('incidents/', include('incidents.urls')),
+    path('cobertura/', include('cobertura.urls')),
+    path('bitacora/', include('bitacora.urls')),
+    path('reports/', include('reports.urls')),
 ]

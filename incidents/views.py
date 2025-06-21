@@ -6,6 +6,8 @@ from django_tables2.export.export import TableExport
 import requests, json, pytz
 from django.http import JsonResponse
 from datetime import datetime, timedelta
+from django.utils import timezone
+from zoneinfo import ZoneInfo
 #from subprocess import getoutput as ejec
 
 def _change_to_local_hour(date_other):
@@ -243,11 +245,12 @@ def servicenow(request):
 def index(request):
     if request.method == 'POST':
         return HttpResponse('ERROR AL USAR METODO POST')
-    tz = pytz.timezone('America/La_Paz')
-    fecha_actual = datetime.now(tz)
+    
+    fecha_actual = timezone.now()
+    dt_local = fecha_actual.astimezone(ZoneInfo('America/Caracas'))
 
-##Masivos  
-    data_masivos = _filtrar_tabla_masivos(1,fecha_actual.strftime("%Y-%m-%d"))
+##Masivos
+    data_masivos = _filtrar_tabla_masivos(1, dt_local.strftime("%Y-%m-%d"))
     tabla_masivos = MasivosNewTable(data_masivos)
     RequestConfig(request, paginate={"per_page": 10}).configure(tabla_masivos)
 
@@ -265,7 +268,7 @@ def index(request):
                         "fijo": tabla_fijo,
                         "it": tabla_it,
                         "mobile": tabla_mobile,
-                        "fecha_update": fecha_actual.strftime('%Y-%m-%d %H:%M:%S %:z'),
+                        "fecha_update": dt_local.strftime('%Y-%m-%d %H:%M:%S %:z'),
                                             })
 
 

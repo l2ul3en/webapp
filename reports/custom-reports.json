@@ -1,0 +1,37 @@
+[
+    {
+        "titulo": "Members of Hostgroup",
+        "descripcion": "List of hosts that are members of a specific hostgroup",
+        "url": "hgroup"
+    },
+    {
+        "titulo": "Disponibilidad por Hostgroup",
+        "descripcion": "Resumen de disponibilidad agrupado por servicios",
+        "url": "#"
+    },
+    {
+        "titulo": "Alertas Recientes",
+        "descripcion": "Últimas alertas generadas por el sistema",
+        "url": "#"
+    },
+    {
+        "titulo": "Rendimiento por Período",
+        "descripcion": "Consumo de CPU, memoria y red por fecha",
+        "url": "#"
+    },
+    {
+        "titulo": "Alertas por Host",
+        "descripcion": "Resumen de alertas agrupadas por host",
+        "url": "#"
+    },
+    {
+        "titulo": "Alertas por Servicio",
+        "descripcion": "Resumen de alertas agrupadas por servicio",
+        "url": "#"
+    },
+    {
+        "titulo": "Alertas por Hostgroup",
+        "descripcion": "Resumen de alertas agrupadas por hostgroup",
+        "url": "#"
+    }
+]

@@ -5,3 +5,5 @@ crispy-bootstrap5
 requests
 pytz
 tablib
+django-import-export
+zabbix-utils

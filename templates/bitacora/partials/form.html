@@ -1,0 +1,6 @@
+<form action="{% url 'bitacora' %}" method="post">
+    {% csrf_token %}
+    <label for="inodo">NODO</label>
+    <input type="text" id="nodo" name="text_nodo" required placeholder="Introduzca Nodo...">
+    <input class="btn-buscar pure-button" type="submit" id="boton-enviar" value="Buscar"/>
+</form>

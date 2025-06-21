@@ -1,4 +1,5 @@
 from pathlib import Path
+from os import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -21,12 +22,16 @@ BASE_INSTALLED_APPS = [
 
 LOCAL_APPS = [
     'incidents',
+    'cobertura',
+    'bitacora',
+    'reports',
 ]
 
 THIRD_APPS = [
     'django_tables2',
     'crispy_forms',
     'crispy_bootstrap5',
+    'import_export',
 ]
 
 INSTALLED_APPS = BASE_INSTALLED_APPS + LOCAL_APPS + THIRD_APPS
@@ -126,6 +131,21 @@ DJANGO_TABLES2_TABLE_ATTRS = {
     }
 }
 
+#URL redirect
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'
+    
+#https://stackoverflow.com/questions/31670231/autologout-a-user-after-specific-time-in-django
+SESSION_COOKIE_AGE = 30 * 60  # 30 minutes
+SESSION_SAVE_EVERY_REQUEST = True  # Refresh session whenever user is active
+
 #Vars crispy forms
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+#Vars Zabbix Reports
+try:
+    ZABBIX_URL = environ["ZABBIX_URL"]
+    ZABBIX_TOKEN = environ["ZABBIX_TOKEN"]
+except KeyError as e:
+    raise KeyError(f"Environment variable {e} is not set. Please set it in your environment variables.") from e

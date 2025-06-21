@@ -1,0 +1,59 @@
+{% extends 'layout/base.html' %}
+{% load render_table from django_tables2 %}
+{% load querystring from django_tables2 %}
+{% block 'title' %}MemberOfGroup{% endblock %}
+{% block 'scripts' %}
+    <script src="https://unpkg.com/htmx.org@1.9.2"></script>
+{% endblock %}
+{% block 'content' %}
+<div class="container py-3">
+    <div class="row text-center">
+        <div class="col">
+            <h2>Members of Group "{{ grupo }}"</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-file-earmark-arrow-down"></i> Export
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="{% querystring '_export'='xlsx' %}">
+                    <i class="bi bi-file-earmark-excel"></i> Excel
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% querystring '_export'='csv' %}">
+                        <i class="bi bi-filetype-csv"></i> CSV
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% querystring '_export'='json' %}">
+                        <i class="bi bi-filetype-json"></i> JSON
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col col-auto text-end">
+            <input type="text" name="q"
+                placeholder="Enter text to search..."
+                class="form-control"
+                hx-get="{% url 'getHosts' %}"
+                hx-target="#tabla"
+                hx-trigger="keyup changed delay:150ms"
+                hx-params="q"
+            />
+        </div>
+    </div>
+    <div id="tabla" class="row text-center">
+        {% include 'reports/table-results.html' %}
+    </div>
+
+    <div class="row text-end">
+        <div class="col">
+            <h5>{{ table.paginator.count }} <em><small>Rows found</small></em></h5>
+        </div>
+    </div>
+</div>
+{% endblock %}

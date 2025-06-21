@@ -1,0 +1,40 @@
+{% extends 'layout/base.html' %}
+{% block 'title' %}Reporting dashboard{% endblock %}
+{% block 'styles' %}
+<style>
+    .card-report {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-report:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+</style>
+{% endblock %}
+
+{% block 'content' %}
+<div class="container py-3">
+    <h1 class="mb-3 text-center">📊 Reporting dashboards</h1>
+    <p class="text-muted text-center mb-5">Select one of the available reports below.</p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        {% for reporte in reports %}
+            <div class="col">
+                <div class="card h-100 card-report shadow-sm border-0">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ reporte.titulo }}</h5>
+                        <p class="card-text text-muted">{{ reporte.descripcion }}</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0">
+                        {% if reporte.url != "#" %}
+                            <a href="{% url reporte.url %}" class="btn btn-primary w-100">Ver Reporte</a>
+                        {% else %}
+                            <button class="btn btn-primary w-100" disabled>Ver Reporte</button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

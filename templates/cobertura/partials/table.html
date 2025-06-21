@@ -1,0 +1,18 @@
+<table class="pure-table-horizontal">
+    <thead>
+        <tr>
+            {% for col in columnas %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+            <tr>
+                <td>{{ i.node }}</td>
+                <td>{{ i.coverage }}</td>
+                <td>{{ i.subscriber }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>

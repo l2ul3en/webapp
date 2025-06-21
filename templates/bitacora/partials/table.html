@@ -1,0 +1,38 @@
+<table class="pure-table-horizontal">
+    <thead>
+        <tr>
+            {% for col in columnas %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+            <tr>
+                <td>{{ i.cmts }}</td>
+                <td>{{ i.address }}</td>
+                <td>{{ i.nodo }}</td>
+                <td>{{ i.ip }}</td>
+                <td>{{ i.mac }}</td>
+                {% if i.graph != None %}
+                    <td><a href="{{ i.graph }}" target="_blank">{{i.us }}</a></td>
+                {% else %}
+                    <td>{{ i.us }}</td>
+                {% endif %}
+                <td>{{ i.ds }}</td>
+                <td>{{ i.fuente }}</td>
+                <td>{{ i.fip }}</td>
+                <td>{{ i.fmac }}</td>
+                {% if i.fgraph != None %}
+                    <td><a href="{{ i.fgraph }}" target="_blank">{{i.fus }}</a></td>
+                {% else %}
+                    <td>{{ i.fus }}</td>
+                {% endif %}
+                <td>{{ i.fds }}</td>
+                <td>{{ i.code }}</td>
+                <td>{{ i.electric }}</td>
+                <td>{{ i.telephone }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>

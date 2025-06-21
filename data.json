@@ -1,0 +1,11 @@
+{
+    "jsonrpc": "2.0",
+    "method": "host.get",
+    "params": {
+	"output": ["name"],
+        "selectHostGroups": ["name"],
+	"selectInterfaces": ["type","ip","dns"],
+		"filter": {"type": ["2"]}
+    },
+    "id": 1
+}

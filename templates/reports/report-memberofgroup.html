@@ -1,0 +1,32 @@
+{% extends 'layout/base.html' %}
+{% load render_table from django_tables2 %}
+{% load querystring from django_tables2 %}
+{% block 'title' %}Reports{% endblock %}   
+{% block 'content' %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h1 class="mb-3">📈 Report by Zabbix</h1>
+            <p class="text-muted">Generates reports of the hosts monitored by Zabbix.</p>
+        </div>
+    </div>
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm border-0">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Select HostGroup</h5>
+                    <form method="post" autocomplete="off">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            {{ form.as_p }}
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="bi bi-bar-chart"></i> Generate Report
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
